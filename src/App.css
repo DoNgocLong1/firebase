@@ -1,9 +1,11 @@
 .App {
   text-align: center;
+  position: relative;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 70vmin;
+  width: 70vmin;
   pointer-events: none;
 }
 
@@ -14,7 +16,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +23,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: absolute;
 }
 
 .App-link {
@@ -35,4 +37,115 @@
   to {
     transform: rotate(360deg);
   }
+}
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+:root {
+	--pink-color: #f2726a;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+.container {
+	height: 100vh;
+	background-image: linear-gradient( 45deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 50%, rgb(255, 204, 112) 100% );
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.card {
+	width: 300px;
+	height: 400px;
+	border-radius: 10px;
+	text-align: center;
+	background-color: #242628;
+	overflow: hidden;
+	margin: 0 30px;
+}
+.card.Lead{
+	background-color:rgba(255, 255, 0, 0.86);
+	border: 5px solid rgb(250, 247, 247);
+}
+
+.card__img {
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	transition: 0.25s;
+	margin: 0 auto;
+	transform: translateY(25px);
+	border-radius: 50%;
+	border: 4px solid var(--pink-color);
+	cursor: pointer;
+}
+.card__img:hover {
+	width: 100%;
+	height: 100%;
+	border-radius: unset;
+	border: unset;
+	transform: unset;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+h2 {
+	color: white;
+	margin-top: 40px;
+}
+.card.Lead h2 {
+	color: #5c1883;
+}
+p {
+	color: var(--pink-color);
+}
+
+.card.Lead p {
+	color: #670105;
+}
+.card__social a {
+	text-decoration: none;
+	color: white;
+	margin: 25px 20px 40px;
+	display: inline-block;
+	font-size: 18px;
+	transition: 0.25s;
+}
+.card.Lead .card__social a{
+	color: #5c1883;
+}
+.card__social a:hover {
+	color: var(--pink-color);
+}
+
+button {
+	outline: none;
+	border: none;
+	color: white;
+	background-color: transparent;
+	border: 1px solid var(--pink-color);
+	padding: 10px 20px;
+	border-radius: inherit;
+	cursor: pointer;
+	transition: 0.25s;
+}
+.card.Lead button {
+	color: #5c1883;
+}
+button:hover {
+	background-color: var(--pink-color);
+}
+.card.Lead button:hover {
+	background-color: #ffff;
 }

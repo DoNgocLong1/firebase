@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Card from './components/card'
+import { useLayoutEffect, useState } from 'react';
+import { ref, child, get} from "firebase/database";
+import {database} from './firebase'
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [member, setMember] = useState([])
+    const dbRef = ref(database);
+    useLayoutEffect(() => {
+        get(child(dbRef, `member`))
+        .then((snapshot) => {
+            snapshot.val()
+            console.log(snapshot.val())
+            const users = [...snapshot.val()]
+            setMember(users)
+            
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }, [dbRef]) 
+    console.log(member.map((item) => {
+        console.log(item)
+        return item
+    }))
+    return (
+        <>
+            {/* <header>
+            </header>
+            <div className="App">
+                <div className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                </div>
+            </div> */}
+            <Card
+            data = {member}
+            />
+        </>
+    );
 }
 
 export default App;
